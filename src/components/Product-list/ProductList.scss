@@ -14,12 +14,29 @@
 
     table {
         table-layout: fixed;
+        border-spacing: 0 10px;
+        border-collapse: collapse;
         width: 100%;
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+            word-break: break-word;
+            overflow: auto;
+            min-width: 100px;
+        }
+
+        tr {
+            border: 1px solid colors.$lrqdo-main-text;
+            //border-width: 1px 0;
+        }
 
         .product-img {
             width: 100px;
 
             img {
+                display: block;
                 max-width: 100px;
                 max-height: 100px;
                 margin: auto;

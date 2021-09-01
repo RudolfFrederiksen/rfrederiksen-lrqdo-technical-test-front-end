@@ -9,7 +9,7 @@ export interface ProductResult {
 export interface Product {
     _id: number;
     product_name: string;
-    allergens: string;
+    allergens_imported: string;
     image_url: string;
     link: string;
 }

@@ -77,21 +77,31 @@ export function ProductList() {
                         <th>name</th>
                         <th>allergens</th>
                         <th>official product page</th>
+                        <th>product detail</th>
                     </tr>
                 </thead>
                 <tbody>
                     {products.map((product) => (
                         <tr key={product._id}>
                             <td className="product-img">
-                                <img src={product.image_url} alt={product.product_name} />
+                                {product.image_url ? (
+                                    <img src={product.image_url} alt={product.product_name} />
+                                ) : (
+                                    <span>Product image is unavailable</span>
+                                )}
                             </td>
-                            <td>{product.product_name}</td>
-                            <td>{product.allergens}</td>
+                            <td>{product.product_name ?? "No name provided"}</td>
+                            <td>{product.allergens_imported ?? "No allergens provided"}</td>
                             <td>
-                                <a href={product.link} target="_blank" rel="noreferrer">
-                                    {product.link}
-                                </a>
+                                {product.link ? (
+                                    <a href={product.link} target="_blank" rel="noreferrer">
+                                        {product.link}
+                                    </a>
+                                ) : (
+                                    <span>No link provided</span>
+                                )}
                             </td>
+                            <td>{/*  todo: add link to product page  */}</td>
                         </tr>
                     ))}
                 </tbody>
