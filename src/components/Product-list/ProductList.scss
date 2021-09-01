@@ -1,0 +1,29 @@
+@use "src/styles/colors";
+
+.ProductList {
+    input {
+        display: block;
+        width: 50%;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: colors.$input-bg;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+
+        .product-img {
+            width: 100px;
+
+            img {
+                max-width: 100px;
+                max-height: 100px;
+                margin: auto;
+            }
+        }
+    }
+}

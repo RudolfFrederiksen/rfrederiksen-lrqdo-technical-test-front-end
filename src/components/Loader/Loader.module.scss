@@ -1,7 +1,8 @@
 @use "../../styles/colors";
 
 .Loader {
-    background: colors.$lrqdo-main-bg;
+    display: flex;
+
     height: 200px;
 }
 
@@ -10,6 +11,7 @@
     position: relative;
     width: 80px;
     height: 80px;
+    margin: auto;
 
     div {
         display: inline-block;
