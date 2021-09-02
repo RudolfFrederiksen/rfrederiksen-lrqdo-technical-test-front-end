@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import "./ProductList.scss";
 import Loader from "../Loader/Loader";
 import debounce from "lodash.debounce";
@@ -95,7 +96,9 @@ export function ProductList() {
                                         <span>No link provided</span>
                                     )}
                                 </td>
-                                <td>{/*  todo: add link to product page  */}</td>
+                                <td>
+                                    <Link to={"/product/" + product._id}>Product detail</Link>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
