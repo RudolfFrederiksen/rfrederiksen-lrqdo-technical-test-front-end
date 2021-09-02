@@ -14,8 +14,9 @@
 
     .table-wrapper {
         overflow: auto;
-        // 82px: height of search input + margin
-        height: calc(100vh - 82px);
+        // height of search input + margin
+        // chrome 82px / ff 83px : use the highest
+        height: calc(100vh - 83px);
 
         thead th {
             position: sticky;

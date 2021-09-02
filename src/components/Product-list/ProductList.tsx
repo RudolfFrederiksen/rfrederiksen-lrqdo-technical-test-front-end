@@ -94,7 +94,7 @@ export function ProductList() {
                                 <td>{product.allergens_imported ?? "No allergens provided"}</td>
                                 <td>
                                     {product.link ? (
-                                        <a href={product.link} target="_blank" rel="noreferrer">
+                                        <a href={product.link} target="_blank" rel="noopener noreferrer">
                                             {product.link}
                                         </a>
                                     ) : (

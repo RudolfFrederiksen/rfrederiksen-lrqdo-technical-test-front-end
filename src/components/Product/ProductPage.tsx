@@ -70,7 +70,7 @@ export function ProductPage() {
                         <td>
                             official product page:
                             {product.link ? (
-                                <a href={product.link} target="_blank" rel="noreferrer">
+                                <a href={product.link} target="_blank" rel="noopener noreferrer">
                                     {product.link}
                                 </a>
                             ) : (
