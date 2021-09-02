@@ -35,9 +35,6 @@ export function ProductList() {
                     setIsLoaded(true);
                     setProducts(result.products);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {
                     setError("An error was raised during product load. Please retry");
                 }
@@ -57,57 +54,55 @@ export function ProductList() {
      * RENDER ZONE
      */
     const renderError = () => {
-        // const { error, isLoaded, products } = this.state;
         return <div>Error: {error}</div>;
     };
 
     const renderLoader = () => {
-        // const { error, isLoaded, products } = this.state;
         return <Loader />;
     };
 
     const renderProducts = () => {
-        // const { error, isLoaded, products } = this.state;
         return products.length > 0 ? (
-            // render product list
-            <table>
-                <thead>
-                    <tr>
-                        <th className="product-img">image</th>
-                        <th>name</th>
-                        <th>allergens</th>
-                        <th>official product page</th>
-                        <th>product detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product) => (
-                        <tr key={product._id}>
-                            <td className="product-img">
-                                {product.image_url ? (
-                                    <img src={product.image_url} alt={product.product_name} />
-                                ) : (
-                                    <span>Product image is unavailable</span>
-                                )}
-                            </td>
-                            <td>{product.product_name ?? "No name provided"}</td>
-                            <td>{product.allergens_imported ?? "No allergens provided"}</td>
-                            <td>
-                                {product.link ? (
-                                    <a href={product.link} target="_blank" rel="noreferrer">
-                                        {product.link}
-                                    </a>
-                                ) : (
-                                    <span>No link provided</span>
-                                )}
-                            </td>
-                            <td>{/*  todo: add link to product page  */}</td>
+            <div className="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th className="product-img">image</th>
+                            <th>name</th>
+                            <th>allergens</th>
+                            <th>official product page</th>
+                            <th>product detail</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {products.map((product) => (
+                            <tr key={product._id}>
+                                <td className="product-img">
+                                    {product.image_url ? (
+                                        <img src={product.image_url} alt={product.product_name} />
+                                    ) : (
+                                        <span>Product image is unavailable</span>
+                                    )}
+                                </td>
+                                <td>{product.product_name ?? "No name provided"}</td>
+                                <td>{product.allergens_imported ?? "No allergens provided"}</td>
+                                <td>
+                                    {product.link ? (
+                                        <a href={product.link} target="_blank" rel="noreferrer">
+                                            {product.link}
+                                        </a>
+                                    ) : (
+                                        <span>No link provided</span>
+                                    )}
+                                </td>
+                                <td>{/*  todo: add link to product page  */}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         ) : (
-            // no search
+            // empty results
             <div>Type a keyword in the search field to load matching food</div>
         );
     };

@@ -12,6 +12,19 @@
         outline: none;
     }
 
+    .table-wrapper {
+        overflow: auto;
+        // 82px: height of search input + margin
+        height: calc(100vh - 82px);
+
+        thead th {
+            position: sticky;
+            top: -1px;
+            z-index: 1;
+            background: colors.$lrqdo-main-bg;
+        }
+    }
+
     table {
         table-layout: fixed;
         border-spacing: 0 10px;
@@ -29,7 +42,7 @@
 
         tr {
             border: 1px solid colors.$lrqdo-main-text;
-            //border-width: 1px 0;
+            border-width: 1px 0;
         }
 
         .product-img {
