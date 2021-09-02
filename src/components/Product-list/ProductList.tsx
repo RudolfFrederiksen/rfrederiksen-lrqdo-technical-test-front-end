@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import "./ProductList.scss";
 import Loader from "../Loader/Loader";
 import debounce from "lodash.debounce";
-import { Product, ProductResult } from "../interfaces/Products.interfaces";
+import { Product, ProductSearchResult } from "../interfaces/Products.interfaces";
 
 export function ProductList() {
     const [search, setSearch] = useState("");
     const [error, setError] = useState("");
     const [isLoaded, setIsLoaded] = useState(true);
     const [products, setProducts] = useState<Array<Product> | []>([]);
+
+    // todo: retain search keyword upon navigation
 
     // debounce search input
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +34,7 @@ export function ProductList() {
         )
             .then((res) => res.json())
             .then(
-                (result: ProductResult) => {
+                (result: ProductSearchResult) => {
                     setIsLoaded(true);
                     setProducts(result.products);
                 },

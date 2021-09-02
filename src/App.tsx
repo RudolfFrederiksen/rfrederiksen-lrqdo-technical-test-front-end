@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import ProductList from "./components/Product-list/ProductList";
-import ProductDetail from "./components/Product/ProductDetail";
+import ProductPage from "./components/Product/ProductPage";
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
             <Router>
                 <Switch>
                     <Route path="/product/:id">
-                        <ProductDetail />
+                        <ProductPage />
                     </Route>
                     {/*
                         Note:
