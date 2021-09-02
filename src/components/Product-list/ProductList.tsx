@@ -6,12 +6,15 @@ import debounce from "lodash.debounce";
 import { Product, ProductSearchResult } from "../interfaces/Products.interfaces";
 
 export function ProductList() {
-    const [search, setSearch] = useState("");
-    const [error, setError] = useState("");
-    const [isLoaded, setIsLoaded] = useState(true);
-    const [products, setProducts] = useState<Array<Product> | []>([]);
+    // todo: quick & dirty search save, could use a redux refactor later
+    const [search, setSearch] = useState<string>(localStorage.getItem("search") ?? "");
+    useEffect(() => {
+        localStorage.setItem("search", search);
+    }, [search]);
 
-    // todo: retain search keyword upon navigation
+    const [error, setError] = useState("");
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [products, setProducts] = useState<Array<Product> | []>([]);
 
     // debounce search input
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,7 +117,7 @@ export function ProductList() {
 
     return (
         <div className="ProductList" data-testid="Product-list">
-            <input type="text" onChange={debouncedChangeHandler} placeholder="Search a product" />
+            <input type="text" defaultValue={search} onChange={debouncedChangeHandler} placeholder="Search a product" />
             {error ? renderError() : isLoaded ? renderProducts() : renderLoader()}
         </div>
     );
